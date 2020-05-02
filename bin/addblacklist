@@ -1,0 +1,30 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import os
+import sys
+
+def main():
+    blacklist_file = os.path.expanduser("~/.blacklistrc")
+    lines = []
+
+    if os.path.exists(blacklist_file):
+        with open(blacklist_file) as myfile:
+            for line in myfile:
+                lines.append(line.strip('\n'))
+
+    for i in range(1, len(sys.argv)):
+        blacklist = os.path.expanduser(sys.argv[i])
+        blacklist = os.path.abspath(blacklist)
+
+        if os.path.exists(blacklist):
+            if blacklist in lines:
+                print(blacklist, "already exists in", blacklist_file)
+            else:
+                with open(blacklist_file, mode='a') as myfile:
+                    myfile.write(blacklist + "\n")
+        else:
+            print(blacklist, "does not exist. Skipping.")
+
+
+if __name__ == "__main__":
+    main()

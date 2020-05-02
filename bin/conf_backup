@@ -1,0 +1,127 @@
+#!/usr/bin/env python
+from __future__ import print_function
+import os
+import sys
+import socket
+from datetime import datetime
+import time
+import subprocess
+
+#TODO: Make a config file instead of hardcoding paths haha
+
+def main():
+    RSFROM = 3
+    RSEXC = RSFROM + 1
+    RSTO = RSFROM + 3
+    TARFILE = 4
+    TARFROM = TARFILE + 1
+    local = False
+    nas = True
+    #os.environ["XZ_OPT"] = "-T0"
+
+    rsync_cmd = ["rsync", "-thr", "--safe-links", "--files-from={0}", "--exclude-from={0}",  "/", "{0}"]
+    tar_cmd = ["nice", "-n19", "tar", "-cJf", "{0}", "{0}"]
+    copy_cmd = ["cp", "file", "dest"]
+
+    hostname = socket.gethostname()
+    backup_file = "/home/kethsar/.backuprc"
+    blacklist_file = "/home/kethsar/.blacklistrc"
+    nas_path = "/mnt/nas/Backup"
+    nas_rsync = os.path.join(nas_path, "rsync")
+    nas_backup = os.path.join(nas_rsync, hostname)
+    local_backup = "/home/kethsar/documents/backup"
+    local_rsync = os.path.join(local_backup, "rsync")
+    today = datetime.today().strftime('%Y-%m-%d')
+    archive_name = "{0}_{1}.tar.xz".format(hostname, today)
+
+    rsync_cmd[RSFROM] = rsync_cmd[RSFROM].format(backup_file)
+    rsync_cmd[RSEXC] = rsync_cmd[RSEXC].format(blacklist_file)
+
+    if not os.path.isfile(backup_file) or os.path.getsize(backup_file) == 0:
+        print(backup_file, "either does not exist or is empty.")
+        sys.exit(1)
+    
+    if nas and os.path.exists(nas_path):
+        rsync_cmd[RSTO] = rsync_cmd[RSTO].format(nas_backup)
+    
+        tar_cmd[TARFILE] = tar_cmd[TARFILE].format(os.path.join(nas_rsync, archive_name))
+        tar_cmd[TARFROM] = tar_cmd[TARFROM].format(nas_backup)
+    else:
+        local = True
+        local_archive = os.path.join(local_backup, archive_name)
+        nas_archive = os.path.join(nas_rsync, archive_name)
+
+        rsync_cmd[RSTO] = rsync_cmd[RSTO].format(local_rsync)
+
+        tar_cmd[2] = tar_cmd[2].format(local_archive)
+        tar_cmd[3] = tar_cmd[3].format(local_rsync)
+
+    execute(rsync_cmd)
+    execute(tar_cmd)
+    cleanup(nas_rsync)
+
+    if local and os.path.exists(nas_path):
+        if not os.path.exists(nas_rsync):
+            os.mkdir(nas_rsync)
+
+        copy_cmd[1] = local_archive
+        copy_cmd[2] = nas_archive
+
+        if not os.path.exists(nas_archive):
+            with open(nas_archive, 'w') as myfile:
+                os.utime(nas_archive)
+
+        execute(copy_cmd)
+        cleanup(nas_rsync)
+
+
+def execute(args):
+    out = ''
+    log("Executing " + " ".join(args))
+
+    try:
+        if sys.version_info.major == 3 and sys.version_info.minor >= 5:
+            out = subprocess.run(args, stdout=subprocess.PIPE).stdout
+        else:
+            try:
+                out = subprocess.check_output(args)
+            except subprocess.CalledProcessError as err:
+                out = err.stdout
+        
+        log(out.decode('unicode_escape'))
+    except Exception as err:
+        log(err)
+
+
+def cleanup(dir):
+    files = []
+    for dirpath, dirnames, filenames in os.walk(dir):
+        files.extend(filenames)
+        break
+    
+    monthago = time.time() - (60 * 60 * 24 * 30)
+
+    for f in files:
+        f = os.path.join(dir, f)
+        mt = os.path.getmtime(f)
+
+        if mt < monthago and f.find("01.tar") < 0:
+            log("Attempting to remove " + f)
+            try:
+                os.remove(f)
+                log("Removed " + f)
+            except Exception as err:
+                log("Failed to remove {}: {}".format(f, err))
+
+
+def log(text):
+    today = datetime.today().strftime('%Y-%m-%d')
+    logf = "/home/kethsar/documents/logs/conf_backup/{}.log".format(today)
+
+    with open(logf, 'a', encoding='utf-8') as f:
+        f.write(text)
+        f.write("\n")
+
+
+if __name__ == "__main__":
+    main()

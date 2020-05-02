@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+[ -e "$1" ] ||
+{
+	echo 'edreq.sh v1.1 - 2016/12/15, 18:23'
+	echo "Need a filename or directory name"
+	exit 1
+}
+
+curl=$(which curl) || curl=''
+wget=$(which wget) || wget=''
+
+[ $curl ] || [ $wget ] ||
+{
+	echo "Need either wget or curl"
+	exit 1
+}
+
+[ -d "$1" ] &&
+{
+	echo "Uploading all files in directory $x"
+	find "$1" -type f |
+	while IFS= read x; do
+		"$0" "$x"
+	done
+	exit 0
+}
+
+echo -n "Uploading $1 ... "
+tp=$(($(date +%s%N)/1000000))
+
+[ $curl ] &&
+{
+	
+	"$curl" -s https://ocv.me/up1/?ts=$tp
+
+	tl=$(($(date +%s%N)/1000000))
+	"$curl" -s -F "f[]=@\"$1\"" -F "tp=$tp" -F "tl=$tl" https://ocv.me/up1/ | grep 'you upped' | sed 's/^[^<]*<h1>\([^<]*\).*/\1/'
+	exit 0
+}
+
+[ $wget ] &&
+{
+	echo 'wget support not added yet'
+	exit 0
+}

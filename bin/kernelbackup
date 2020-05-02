@@ -1,0 +1,2 @@
+#!/bin/bash
+cp /usr/src/linux/.config ~/documents/backup/kernelcfg/kernel-config-$(uname -r)_$(date +%Y%m%d)

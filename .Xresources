@@ -1,0 +1,63 @@
+Xft*dpi:			96
+Xft*antialiasing:		false
+Xft*rgba:			rgb
+urxvt*font:			xft:xos4 Terminus:size=12,\ xft:Monospace:pixelsize=12,\ xft:Kochi Gothic,\ xft:GulimChe
+!urxvt*font:			xft:Monospace:pixelsize=16,\ xft:Kochi Gothic,\ xft:GulimChe
+urxvt*geometry:			80x24
+urxvt*internalBorder:		4
+urxvt*fading:			0
+urxvt*foreground: 		rgba:ffff/ffff/ffff/ffff
+urxvt*background: 		rgba:0000/0000/0000/ffff
+urxvt*saveLines:		8191
+urxvt*visualBell:		false
+urxvt*scrollTtyKeypress:	true
+urxvt*scrollWithBuffer:		false
+urxvt*scrollTtyOutput:		false
+urxvt*scrollBar:		false
+urxvt*scrollstyle:		plain
+!urxvt*scrollBar_right:		true
+urxvt*scrollColor:		#777777
+urxvt*cursorColor:		#ffcc00
+!urxvt*cutchars:		(){}[]<>,|*"'
+urxvt*print-pipe:		cat > $(echo urxvt.dump.$(date + '%Y%M%d%H%m%S'))
+urxvt*secondaryScroll:		true
+urxvt*mapAlert:			false
+urxvt*utmpInhibit:		true
+urxvt*per-lib:			/usr/lib/urxvt/perl/
+urxvt*perl-ext-common:		default,matcher
+!urxvt*urlLauncher:		/usr/bin/chromium
+urxvt*matcher.button:		2
+!urxvt*keysym.Home:		\033[1~
+!urxvt*keysym.End:		\033[4~
+!urxvt*termName:		rxvt-unicode
+urxvt*termName:			xterm-256color
+
+!colors 0-7  normal
+!colors 8-15 bright
+!foreground: #ffffff
+!background: #000000
+
+! black
+*color0:  #404040
+*color8:  #606060
+! red
+*color1:  #f03669
+*color9:  #c75b79
+! green
+*color2:  #b8e346
+*color10: #c8e37e
+! yellow
+*color3:  #ffa402
+*color11: #ffbe4a
+! blue
+*color4:  #02a2ff
+*color12: #71cbff
+! magenta
+*color5:  #f65be3
+*color13: #b67fe3
+! cyan
+*color6:  #3da698
+*color14: #9cf0ed
+! white
+*color7:  #d2d2d2
+*color15: #ffffff

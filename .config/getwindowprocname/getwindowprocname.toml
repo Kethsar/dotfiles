@@ -1,0 +1,15 @@
+# Port to listen on when run in Server mode
+Port = ":9002"
+
+# Address to connect to when run in Client mode on Linux
+ServerAddress = "192.168.122.158:9002"
+
+# Run as a server?
+ServerMode = false
+
+# Write the returned data to a file in JSON format
+# Only for Client mode on linux
+WriteToFile = true
+
+# File to write info to if WriteToFile is true
+FileLocation = "/tmp/getwindowprocname.json"

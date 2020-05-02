@@ -1,0 +1,39 @@
+# Volume
+#MOUSE_BTN3 add volume 5
+#MOUSE_BTN4 add volume -5
+#UP add volume 5
+#DOWN add volume -5
+MOUSE_BTN3 add ao-volume 5
+MOUSE_BTN4 add ao-volume -5
+UP add ao-volume 5
+DOWN add ao-volume -5
+
+# Subtitles
+F1 add sub-delay +0.5
+F2 add sub-delay -0.5
+s cycle sub
+z add sub-scale +0.1
+x add sub-scale -0.1
+
+# Audio
++ add audio-delay +0.5
+- add audio-delay -0.5
+a cycle audio
+
+# Playback
+#KP6 osd-msg seek 2 relative+exact
+#KP4 osd-msg seek -2 relative+exact
+RIGHT osd-msg seek 2 relative+exact
+LEFT osd-msg seek -2 relative+exact
+
+## for skipping OPs/EDs on non-chaptered files
+Shift+RIGHT osd-msg seek 90 relative+exact
+Shift+LEFT osd-msg seek -90 relative+exact
+
+#PGUP add chapter -1
+#PGDWN add chapter 1
+PGDWN script-binding nextfile/next
+PGUP script-binding nextfile/prev
+
+# Other
+Alt+ENTER cycle fullscreen

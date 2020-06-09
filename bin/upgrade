@@ -3,5 +3,5 @@ if [[ "$1" =~ p(retend)? ]]
 then
 	emerge -uDUpav --with-bdeps=y @world
 else
-	sudo emerge -uDUav --with-bdeps=y @world
+	sudo emerge -uDUav --quiet-build --with-bdeps=y @world
 fi

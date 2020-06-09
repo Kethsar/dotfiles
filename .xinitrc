@@ -1,5 +1,5 @@
 #xrandr --auto
-compton -b
+picom -b
 #nvmeta &
 ibus-daemon -drx
-exec startxfce4 --with-ck-launch
+exec startxfce4

@@ -7,7 +7,7 @@ urxvt*geometry:			80x24
 urxvt*internalBorder:		4
 urxvt*fading:			0
 urxvt*foreground: 		rgba:ffff/ffff/ffff/ffff
-urxvt*background: 		rgba:0000/0000/0000/ffff
+urxvt*background: 		rgb:1c/1c/1c
 urxvt*saveLines:		8191
 urxvt*visualBell:		false
 urxvt*scrollTtyKeypress:	true

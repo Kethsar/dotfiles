@@ -19,7 +19,10 @@ fi
 
 name=$("$gwpc" -x $x -y $y)
 
-[[ "$name" = "ed6_win_DX9" ]] &&
+if [[ "$name" = "ed6_win_DX9" ]]; then
 	name="eiyuu_densetsu_sora_no_kiseki"
+elif [[ "$name" = "artemis" ]]; then
+	name="ixshe_tell"
+fi
 
 echo "$name"

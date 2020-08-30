@@ -24,7 +24,7 @@
 
 # MPlayer2
 #player=C:\mplayer2\mplayer2.exe -cache 4096
-player=mpv 
+player=mpv --profile=low-latency
 # --cache=no
 player-no-close
 

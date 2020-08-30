@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo emerge-webrsync
 sudo emaint -r dotnet sync
-sudo emaint -r flatpak-overlay sync
+#sudo emaint -r flatpak-overlay sync
 sudo emaint -r deadbeef-overlay sync
 sudo emaint -r binaryden sync

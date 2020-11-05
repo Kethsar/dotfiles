@@ -21,7 +21,7 @@ name=$("$gwpc" -x $x -y $y)
 
 if [[ "$name" = "ed6_win_DX9" ]]; then
 	name="eiyuu_densetsu_sora_no_kiseki"
-elif [[ "$name" = "artemis" ]]; then
+elif [[ "$name" = "Artemis" ]]; then
 	name="ixshe_tell"
 fi
 

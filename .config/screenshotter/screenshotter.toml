@@ -88,3 +88,7 @@ Compression = 5
 [[Overrides]]
   Name = "wine64-preloader"
   Delegate = "/home/kethsar/.config/screenshotter/wine_delegate.sh"
+
+[[Overrides]]
+  Name = "python3-7m"
+  Delegate = "/home/kethsar/.config/screenshotter/anki_delegate.sh"

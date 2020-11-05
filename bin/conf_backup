@@ -17,10 +17,9 @@ def main():
     TARFROM = TARFILE + 1
     local = False
     nas = True
-    #os.environ["XZ_OPT"] = "-T0"
 
     rsync_cmd = ["rsync", "-thr", "--safe-links", "--files-from={0}", "--exclude-from={0}",  "/", "{0}"]
-    tar_cmd = ["nice", "-n19", "tar", "-cJf", "{0}", "{0}"]
+    tar_cmd = ["nice", "-n19", "tar", "-cf", "{0}", "{0}"]
     copy_cmd = ["cp", "file", "dest"]
 
     hostname = socket.gethostname()
@@ -32,7 +31,7 @@ def main():
     local_backup = "/home/kethsar/documents/backup"
     local_rsync = os.path.join(local_backup, "rsync")
     today = datetime.today().strftime('%Y-%m-%d')
-    archive_name = "{0}_{1}.tar.xz".format(hostname, today)
+    archive_name = "{0}_{1}.tar".format(hostname, today)
 
     rsync_cmd[RSFROM] = rsync_cmd[RSFROM].format(backup_file)
     rsync_cmd[RSEXC] = rsync_cmd[RSEXC].format(blacklist_file)

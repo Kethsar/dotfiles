@@ -24,3 +24,8 @@ if [ -d "$GOPATH/bin" ] ; then
 	PATH="$PATH:$GOPATH/bin"
 fi
 
+# Qt 5.14 or 5.15 fucked things up hard
+# Requires setting this for shit to display properly
+export QT_FONT_DPI=96
+
+export WINEPREFIX="$HOME/opt/wine_f2k"

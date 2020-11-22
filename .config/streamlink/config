@@ -27,6 +27,9 @@
 player=mpv --profile=low-latency
 # --cache=no
 player-no-close
+hls-segment-threads=3
+hls-live-edge=1
+hls-segment-stream-data
 
 # Use this if you want to transport the stream to the player via a named pipe.
 #player-fifo

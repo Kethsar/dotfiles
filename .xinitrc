@@ -1,5 +1,5 @@
 #xrandr --auto
 picom -b
 #nvmeta &
-ibus-daemon -drx
+#ibus-daemon -drx
 exec startxfce4

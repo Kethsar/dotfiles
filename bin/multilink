@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while [ $# -gt 0 ]; do
+	streamlink -p 'mpv --profile=low-latency --geometry=960x540' $1 '720p' >/dev/null &
+	shift
+done

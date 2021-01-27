@@ -1,7 +1,8 @@
 #!/bin/bash
 if [[ "$1" =~ p(retend)? ]]
 then
-	emerge -uDUpavt --with-bdeps=y @world
+	emerge --nospinner -uDUpav --with-bdeps=y @world
 else
-	sudo emerge -uDUav --with-bdeps=y @world
+	sudo emerge --nospinner -uDUav --with-bdeps=y @world
+	eclean-dist -pd
 fi

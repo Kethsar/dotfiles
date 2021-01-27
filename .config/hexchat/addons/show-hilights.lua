@@ -35,7 +35,7 @@ local function on_hilight(event, args)
     hlctx = curctx:find_context(nil, '[Hilights]')
 
     if (hlctx == nil) then
-        curctx:command('query [Hilights]')
+        curctx:command('query -nofocus [Hilights]')
         hlctx = curctx:find_context(nil, '[Hilights]')
     end
 

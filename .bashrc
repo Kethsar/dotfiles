@@ -52,7 +52,6 @@ PS1="\n\
 alias q='kill -9 $$'
 alias a='tmux attach || tmux'
 alias lg='looking-glass-client'
-alias ytdl='youtube-dl -f "(399/335/303/248/299/137/398/334/302/247/298/136)+(251/258/256/140/250/249)/best"'
 alias dmesg='dmesg -e'
 alias ltspice='wine ~/opt/wine_f2k/drive_c/ltspice/LTSpice.exe'
 alias tjail='ssh -p 573 root@192.168.1.2'

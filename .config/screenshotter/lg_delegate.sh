@@ -13,8 +13,8 @@ then
 	# Hardcoded values cause lazy
 	# 1080 is the X offset from 0,0 on the host for our looking glass client window
 	# 840 is the Y offset
-	x=$(( SCREENSHOTTER_MOUSEX - 1080 ))
-	y=$(( SCREENSHOTTER_MOUSEY - 840 ))
+	x=$(( SCREENSHOTTER_MOUSEX - 2560 ))
+	y=$(( SCREENSHOTTER_MOUSEY))
 fi
 
 name=$("$gwpc" -x $x -y $y)

@@ -1,7 +1,7 @@
 Xft*dpi:			96
 Xft*antialiasing:		false
 Xft*rgba:			rgb
-urxvt*font:			xft:xos4 Terminus:size=12,\ xft:Monospace:pixelsize=12,\ xft:Kochi Gothic,\ xft:GulimChe
+urxvt*font:			xft:Terminus:size=12,\ xft:Monospace:pixelsize=12,\ xft:Kochi Gothic,\ xft:GulimChe
 !urxvt*font:			xft:Monospace:pixelsize=16,\ xft:Kochi Gothic,\ xft:GulimChe
 urxvt*geometry:			80x24
 urxvt*internalBorder:		4

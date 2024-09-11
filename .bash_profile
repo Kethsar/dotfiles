@@ -7,6 +7,8 @@ if [[ -f ~/.bashrc ]] ; then
 fi
 
 export GOPATH="$HOME/documents/dev/go"
+export CARGO_HOME="$HOME/documents/dev/rust"
+export CARGO_TARGET_DIR="/mnt/data/cache/rust"
 
 if [ -d "$HOME/bin" ] ; then
 	PATH="$PATH:$HOME/bin"
@@ -24,8 +26,13 @@ if [ -d "$GOPATH/bin" ] ; then
 	PATH="$PATH:$GOPATH/bin"
 fi
 
+if [ -d "$CARGO_HOME/bin" ] ; then
+	PATH="$PATH:$CARGO_HOME/bin"
+fi
+
 # Qt 5.14 or 5.15 fucked things up hard
 # Requires setting this for shit to display properly
 export QT_FONT_DPI=96
 
 export WINEPREFIX="$HOME/opt/wine_f2k"
+export EDITOR="/usr/bin/vim"

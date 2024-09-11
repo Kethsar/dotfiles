@@ -8,8 +8,4 @@ trap sighook SIGINT
 
 [ $# -lt 1 ] && echo "Provide at least one video or playlist to download" && exit 1
 
-while [ $# -gt 0 ]; do
-	echo "Downloading $1"
-	youtube-dl -f "(399/335/303/248/299/137/398/334/302/247/298/136)+(251/258/256/140/250/249)/best" --ignore-errors -o "%(uploader)s_%(upload_date)s_%(title)s.%(ext)s" $1
-	shift
-done
+nice yt-dlp -N 6 -f "(700/400/336/308/271/304/264/399/335/303/248/299/137/398/334/302/247/298/136)+(251/258/256/140/250/249)/best" --ignore-errors --embed-metadata -o "%(uploader)s/%(upload_date)s_%(title)s.%(ext)s" "$@"

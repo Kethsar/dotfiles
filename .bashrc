@@ -8,7 +8,7 @@ function bslcb {
 		) [$RETVL]"
 	} ||
 	BSLMT=']'
-	BSLMT="bash.$(whoami) [$$-$BSLMT"
+		BSLMT="$(date +%s) bash.$(whoami) [$$-$BSLMT"
 	
 	# pick your poison
 	#logger -p local6.debug "$BSLMT"
@@ -50,11 +50,18 @@ PS1="\n\
 \[\033[0m\]\n"
 
 alias q='kill -9 $$'
-alias a='tmux attach || tmux'
 alias lg='looking-glass-client'
 alias dmesg='dmesg -e'
 alias ltspice='wine ~/opt/wine_f2k/drive_c/ltspice/LTSpice.exe'
-alias tjail='ssh -p 573 root@192.168.1.2'
+alias tjail='ssh root@192.168.1.2'
 alias dots='/usr/bin/git --git-dir=/home/kethsar/.config/dotgit --work-tree=/home/kethsar'
-alias anki="/home/kethsar/opt/anki/bin/python -c 'import aqt; aqt.run()'"
+alias anki='QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox" /home/kethsar/opt/anki/bin/anki'
 alias icecast='sudo icecast -c /etc/icecast2/icecast.xml'
+alias proton='STEAM_COMPAT_DATA_PATH="$HOME/opt/geimu/.proton_compat" "$HOME/.steam/root/steamapps/common/Proton 5.13/proton"'
+
+. /etc/bash.bashrc.tmux
+
+
+export CARGO_HOME="$HOME/documents/dev/rust"
+export CARGO_TARGET_DIR="/mnt/data/cache/rust"
+export LESSSECURE="1"

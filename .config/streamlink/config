@@ -24,12 +24,15 @@
 
 # MPlayer2
 #player=C:\mplayer2\mplayer2.exe -cache 4096
-player=mpv --profile=low-latency
+player=mpv
 # --cache=no
 player-no-close
-hls-segment-threads=3
+stream-segment-threads=2
 hls-live-edge=1
 hls-segment-stream-data
+hls-playlist-reload-time 1
+hls-segment-queue-threshold 6
+twitch-disable-ads
 
 # Use this if you want to transport the stream to the player via a named pipe.
 #player-fifo

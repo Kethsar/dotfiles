@@ -1,6 +1,7 @@
 #!/bin/bash
 
 while [ $# -gt 0 ]; do
-	streamlink -p 'mpv --profile=low-latency --geometry=960x540' $1 '720p' >/dev/null &
+	streamlink --player-args '--mute=yes --profile=low-latency' $1 '720p60,720p' >/dev/null &
+	#mpv --mute=yes --ytdl-raw-options="format=300/95" $1 2>/dev/null &
 	shift
 done

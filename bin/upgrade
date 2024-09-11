@@ -1,8 +1,9 @@
 #!/bin/bash
-if [[ "$1" =~ p(retend)? ]]
+if [[ "$1" =~ ^p(retend)? ]]
 then
 	emerge --nospinner -uDUpav --with-bdeps=y @world
 else
-	sudo emerge --nospinner -uDUav --with-bdeps=y @world
-	eclean-dist -pd
+	sudo nice emerge --nospinner -uDUav --with-bdeps=y @world "$@"
+	#eclean-dist -pd
+	echo "Run 'eclean-dist -d' to clean package files"
 fi
